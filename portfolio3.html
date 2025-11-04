@@ -9,19 +9,19 @@
 </head>
 <body>
     <nav class="navbar">
-    <a href="#" class="logo">Portfolio.</a>
-
-    <div class="nav-links hidden-menu">
-        <i class="fa fa-times close"></i>
+        <a href="#" class="logo">Portfolio.</a>
+        <div id="nav_links">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+        </div>
         <ul>
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#service">Service</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#service">Service</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
-    </div>
-
-    <i class="fa fa-bars show-menu"></i>
+        <div id="nav_links">
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </div>
     </nav>
 
     <section class="home">
@@ -79,22 +79,6 @@
             </div>
         </section>
 
-        <section class="project-slides">
-            <div class="slider-wrapper">
-                <div class="slides">
-                    <img src="project-images/blue-project.jpg" alt="Image #1" class="slide">
-                    <img src="project-images/example-project.jpg" alt="Image #2" class="slide">
-                    <img src="project-images/fashion-project.jpg" alt="Image #3" class="slide">
-                    <img src="project-images/food-project.jpg" alt="Image #4" class="slide">
-                    <img src="project-images/furniture-project.jpg" alt="Image #5" class="slide">
-                    <img src="project-images/restaurant-project.jpg" alt="Image #6" class="slide">
-                </div>
-                <button class="prev" onclick="prevSlide()">&#10094</button>
-                <button class="next" onclick="nextSlide()">&#10095</button>
-            </div>
-        </section>
-
-
         <section id="about" class="about-me">
             <div> <h2>About me</h2> </div>
             
@@ -143,7 +127,19 @@
         </section>
     </main>
 
-    <script src="javaSlides.js"></script>
+<!--------- JavaScript for toggle menu --------->
+    <script>
 
+        let navLinks = document.getElementById("nav_links")
+
+        function showMenu() {
+            navLinks.style.right = "0";
+        }
+
+        function hideMenu() {
+            navLinks.style.right = "-200px";
+        }
+
+    </script>
 </body>
 </html>

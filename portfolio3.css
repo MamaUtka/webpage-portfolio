@@ -25,59 +25,22 @@ html {
 }
 
 /* NAVBAR CONTENT */
-
 .navbar {
     position: fixed;
     left: 0;
     top: 0;
     width: 100%;
-    padding: 25px 70px 25px 105px;
+    padding: 25px 7%;
     background: rgba(255, 255, 255, 0.85);
     backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0 0 15px rgba(125, 95, 255, 0.15);
+    box-shadow: 0 0 20px rgba(125, 95, 255, 0.15),
+    inset 0 -5px 15px -5px rgba(125, 95, 255, 0.2);
     z-index: 100;
     transition: 1s;
 }
-
-  .nav-links .fa {
-    display: block;
-    font-size: 24px;
-    color: var(--violet);
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  }
-
-  nav .fa-bars {
-    display: block;
-    color: var(--violet);
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  .nav-links ul {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-
-  .nav-links {
-    position: fixed;
-    background: var(--bg);
-    height: 100vh;
-    width: 300px;
-    top: 0;
-    right: -300px;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 60px 30px;
-    transition: 0.5s;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-  }
 
 .navbar .logo {
     font-size: 30px;
@@ -93,52 +56,6 @@ html {
     list-style: none;
     margin-left: 35px;
 }
-
-/*
-@media (max-width: 700px) {
-  .nav-links {
-    position: fixed;
-    background: var(--bg);
-    height: 100vh;
-    width: 300px;
-    top: 0;
-    right: 0px;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 60px 30px;
-    transition: 0.5s;
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1);
-  }
-
-  .nav-links.show {
-    right: 0;
-  }
-
-  .nav-links .fa {
-    display: block;
-    font-size: 24px;
-    color: var(--violet);
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    cursor: pointer;
-  }
-
-  nav .fa-bars {
-    display: block;
-    color: var(--violet);
-    font-size: 24px;
-    cursor: pointer;
-  }
-
-  .nav-links ul {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-  }
-}
-
-*/
 
 a {
     font-size: 20px;
@@ -165,18 +82,18 @@ a {
 
 .home-info h1,
 .home-info h2 {
-    font-size: 50px;
-    text-shadow: 0 0 3px rgba(125, 95, 255, 0.5),
-               0 0 3px rgba(255, 138, 203, 0.3);
+    font-size: 55px;
+    text-shadow: 0 0 8px rgba(125, 95, 255, 0.5),
+               0 0 16px rgba(255, 138, 203, 0.3);
 }
 
 .home-info h2 {
-    font-size: 25px;
-    margin-bottom: 40px;
+    font-size: 32px;
+    margin-top: -10px;
 }
 
 .home-info p {
-    font-size: 18px;
+    font-size: 16px;
     margin: 10px 0 25px;
     color: var(--dark)
 }
@@ -379,78 +296,6 @@ a {
   opacity: 0.2;
 }
 
-/* ----------- PROJECT SLIDER -------------*/
-
-.project-slides {
-  text-align: center;
-  min-height: 100vh;
-  padding: 120px 7%;
-  background: var(--bg);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.slider-wrapper {
-  position: relative;
-  width: 80%;
-  max-width: 800px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-}
-
-.slides img {
-  display: none;
-  width: 100%;
-  max-width: 900px;
-  box-shadow: 5px 5px 20px rgba(32, 29, 35, 0.886);
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-img.displaySlide {
-  display: block;
-}
-
-.slider-wrapper button {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  padding: 10px 15px;
-  background-color: rgba(0, 0, 0, 0.4);
-  color: white;
-  border: none;
-  cursor: pointer;
-  border-radius: 10%;
-  transition: 0.3s ease;
-}
-
-.slider-wrapper button:hover {
-  background-color: rgba(0, 0, 0, 0.7);
-}
-
-.slider-wrapper .prev {
-  left: -70px;
-}
-
-.slider-wrapper .next {
-  right: -70px;
-}
-
-@keyframes fade {
-  from {
-    opacity: .5
-  }
-
-  to {
-    opacity: 1
-  }
-}
-
 /* ---------ABOUT ME ------------ */
 
 .about-me {
@@ -596,4 +441,275 @@ img.displaySlide {
   grid-column: 2;
   justify-self: end;
   align-self: end;
+}
+
+
+
+/* ... Ваш существующий CSS код выше ... */
+
+/* -------------------------------------------------------------------------------------- */
+/* 💻 АДАПТИВНОСТЬ */
+/* -------------------------------------------------------------------------------------- */
+
+/* Медиа-запрос для экранов до 1500px */
+@media (max-width: 1500px) {
+    .features {
+        /* Переключаем на 2 колонки, когда места становится меньше */
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Медиа-запрос для экранов до 1000px */
+@media (max-width: 1000px) {
+    /* Изменения в навигации и главном блоке */
+    .navbar {
+        padding: 20px 5%;
+    }
+
+    .navbar ul {
+        /* Скрываем обычное меню для мобильных устройств */
+        position: fixed;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        height: 100vh;
+        width: 250px;
+        top: 0;
+        right: -250px; /* Скрываем за экраном */
+        text-align: left;
+        padding: 70px 30px;
+        box-shadow: -10px 0 20px rgba(125, 95, 255, 0.2);
+        flex-direction: column;
+        transition: right 0.5s;
+    }
+
+    .navbar ul li {
+        margin: 20px 0;
+    }
+
+    /* Отображаем иконку "гамбургера" */
+    .fa-bars {
+        display: block !important;
+        color: var(--violet);
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Скрываем иконку закрытия по умолчанию */
+    .fa-times {
+        display: block !important;
+        position: absolute;
+        top: 25px;
+        right: 25px;
+        color: var(--dark);
+        font-size: 24px;
+        cursor: pointer;
+    }
+    
+    /* Блок Home */
+    .home {
+        flex-direction: column-reverse; /* Ставим текст сверху, изображение снизу */
+        text-align: center;
+        height: auto;
+        padding: 120px 7% 50px; /* Увеличиваем верхний отступ для фиксированной навигации */
+        gap: 50px;
+    }
+
+    .home-info h1,
+    .home-info h2 {
+        font-size: 40px;
+    }
+
+    .home-info h2 {
+        font-size: 24px;
+    }
+
+    .home-info .btn-sci {
+        justify-content: center; /* Центрируем кнопки и иконки */
+    }
+
+    .home-img .img-box {
+        width: 280px;
+        height: 280px;
+    }
+
+    /* Блок Feature Section */
+    .features {
+        grid-template-columns: 1fr; /* Одна колонка */
+    }
+
+    /* Блок About Me */
+    .about-me {
+        padding: 100px 5% 40px;
+    }
+
+    .about-me h2 {
+        font-size: 40px;
+    }
+
+    .about-me .about-section::before {
+        left: 20px; /* Сдвигаем вертикальную линию */
+        transform: none;
+    }
+
+    .about-education,
+    .about-experience {
+        padding-left: 40px; /* Отступ для содержимого */
+    }
+    
+    /* Блок Contact Me */
+    .contact_me form {
+        grid-template-columns: 1fr; /* Одна колонка */
+        padding: 30px;
+    }
+
+    .btn-primary {
+        grid-column: 1; /* Кнопка занимает всю ширину */
+        justify-self: center;
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .contact_me textarea {
+        grid-column: 1 / -1; 
+    }
+
+    .contact_me .checkbox {
+        grid-column: 1; /* Чекбокс на своей строке */
+        justify-self: start;
+        margin-bottom: 20px;
+    }
+}
+
+/* Медиа-запрос для экранов до 500px */
+/* Медиа-запрос для экранов до 500px */
+@media (max-width: 500px) {
+    /* NAVBAR: Убедимся, что навигация не мешает */
+    .navbar {
+        padding: 15px 4%;
+    }
+
+    /* HOME SECTION: Главная секция */
+    .home {
+        padding: 100px 4% 50px;
+        gap: 30px;
+    }
+
+    .home-info h1 {
+        /* Уменьшаем главный заголовок */
+        font-size: 30px; 
+    }
+
+    .home-info h2 {
+        /* Уменьшаем подзаголовок */
+        font-size: 18px;
+    }
+
+    .home-info p {
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    /* Изображение */
+    .home-img .img-box {
+        width: 250px; /* Уменьшаем размер контейнера изображения */
+        height: 250px;
+        padding: 4px;
+    }
+    
+    /* Кнопки и соц. сети */
+    .btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        margin-bottom: 10px; /* Добавляем отступ, если в стеке */
+    }
+
+    .home-info .btn-sci {
+        flex-direction: column; /* Ставим кнопку над иконками */
+        gap: 15px;
+    }
+
+    .sci {
+        display: flex; /* Убеждаемся, что иконки расположены горизонтально */
+        justify-content: center;
+    }
+
+    .sci a {
+        width: 35px;
+        padding: 6px;
+        margin: 0 5px;
+    }
+
+    /* FEATURE SECTION: Секция с услугами */
+    .feature-section {
+        padding: 80px 4%; /* Уменьшаем отступы */
+    }
+    
+    .feature-section .description h2 {
+        font-size: 28px;
+    }
+
+    .feature-card {
+        padding: 30px 20px;
+    }
+    
+    /* ABOUT ME SECTION: Секция "Обо мне" */
+    .about-me h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    .about-education h3,
+    .about-experience h3 {
+        font-size: 22px;
+    }
+    
+    .about-education p,
+    .about-experience p {
+        font-size: 15px;
+    }
+
+    /* CONTACT ME SECTION: Секция контактов */
+    .contact_me h2 {
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    .contact_me form {
+        padding: 20px;
+    }
+
+    .btn-primary {
+        max-width: 100%;
+        font-size: 16px;
+    }
+}
+
+/* Медиа-запрос для экранов до 300px (для очень маленьких) */
+@media (max-width: 300px) {
+    /* Дополнительное сжатие для самых маленьких экранов */
+    .navbar .logo {
+        font-size: 20px;
+    }
+
+    .home-info h1 {
+        font-size: 26px;
+    }
+    
+    .home-info h2 {
+        font-size: 16px;
+    }
+
+    .home-img .img-box {
+        width: 180px;
+        height: 180px;
+    }
+
+    .sci a {
+        width: 30px;
+        padding: 4px;
+    }
+    
+    .feature-section .description h2 {
+        font-size: 24px;
+    }
 }
