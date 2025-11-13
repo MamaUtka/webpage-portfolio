@@ -405,6 +405,7 @@ a {
 .slides img {
   display: none;
   width: 100%;
+  height: 500px;
   max-width: 900px;
   box-shadow: 5px 5px 20px rgba(32, 29, 35, 0.886);
   border-radius: 10px;
@@ -413,6 +414,7 @@ a {
 
 img.displaySlide {
   display: block;
+  animation: fade .6s ease-in-out;
 }
 
 .slider-wrapper button {
@@ -443,7 +445,7 @@ img.displaySlide {
 
 @keyframes fade {
   from {
-    opacity: .5
+    opacity: .7
   }
 
   to {
@@ -548,15 +550,25 @@ img.displaySlide {
   box-shadow: 0 10px 30px rgba(125, 95, 255, 0.15);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-areas: 
+  "box-1 box-2"
+  "box-3 box-4"
+  "box-5 box-5";
+  gap: 30px;
   transition: 0.3s ease;
 }
+
+.box-1 { grid-area: box-1; }
+.box-2 { grid-area: box-2; }
+.box-3 { grid-area: box-3; }
+.box-4 { grid-area: box-4; }
+.box-5 { grid-area: box-5; }
 
 .btn-primary {
   grid-column: 2;
   justify-self: end;
   align-self: end;
-  width: 300px;
+  width: 250px;
 }
 
 
@@ -565,7 +577,6 @@ img.displaySlide {
 }
 
 .contact_me textarea {
-  grid-column: 1 / -1; 
   justify-content: stretch;
 }
 
@@ -573,13 +584,13 @@ img.displaySlide {
 .contact_me input,
 .contact_me textarea {
   width: 100%;
-  padding: 15px 20px;
   border: 2px solid transparent;
-  border-radius: 10px;
+  border-radius: 7px;
   background: #f6f4ff;
   font-size: 16px;
   color: var(--dark);
   transition: all 0.3s ease;
+  padding: 15px 40px 15px 50px;
 }
 
 .contact_me input:focus,
@@ -597,3 +608,82 @@ img.displaySlide {
   justify-self: end;
   align-self: end;
 }
+
+
+/* ============ SUBMISSION FORM STYLE ERRORS =============*/
+
+#submission-form div span {
+  display: block;
+  color: #d51222;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.box-1,
+.box-2,
+.box-3,
+.box-4,
+.box-5 {
+  display: grid;
+  position: relative;
+}
+
+form div.shake {
+  animation: shake 0.3s ease-in-out;
+}
+
+
+/* ERROR ICONS */
+
+form div .fa-solid {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(0%);
+  font-size: 18px;
+  color: rgb(132, 128, 135);
+}
+
+form div .fa-comment {
+  left: 20px;
+  top: 27%;
+  transform: translateY(0%);
+}
+
+form div .fa-exclamation-circle {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  color: #df303fe2;
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+form div.error .fa-solid {
+  transform: translateY(-50%);
+
+}
+
+form div.error .fa-exclamation-circle { 
+  opacity: 1;
+}
+
+form div.error input,
+form div.error textarea {
+  border-color: #df303e;
+}
+
+@keyframes shake {
+  0%, 100% {
+    margin-left: 0;
+  }
+  20%, 80% {
+    margin-left: -12px;
+  }
+  40%, 60% {
+    margin-left: 12px;
+  }
+}
+

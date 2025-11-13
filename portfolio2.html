@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="portfolio2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="portfolio2.css">
     <title>Document</title>
 </head>
 <body>
@@ -16,6 +16,7 @@
         <ul>
         <li class="active"><a href="#">Home</a></li>
         <li><a href="#service">Service</a></li>
+        <li><a href="#projects">My Projects</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
         </ul>
@@ -79,13 +80,14 @@
             </div>
         </section>
 
-        <section class="project-slides">
+        <!-- PROJECTS SECTION -->
+        <section id="projects" class="project-slides">
             <div class="slider-wrapper">
                 <div class="slides">
                     <img src="project-images/blue-project.jpg" alt="Image #1" class="slide">
                     <img src="project-images/example-project.jpg" alt="Image #2" class="slide">
                     <img src="project-images/fashion-project.jpg" alt="Image #3" class="slide">
-                    <img src="project-images/food-project.jpg" alt="Image #4" class="slide">
+                    <img src="project-images/design-project.jpg" alt="Image #4" class="slide">
                     <img src="project-images/furniture-project.jpg" alt="Image #5" class="slide">
                     <img src="project-images/restaurant-project.jpg" alt="Image #6" class="slide">
                 </div>
@@ -93,7 +95,7 @@
                 <button class="next" onclick="nextSlide()">&#10095</button>
             </div>
         </section>
-
+        <!-- + PROJECTS SECTION + -->
 
         <section id="about" class="about-me">
             <div> <h2>About me</h2> </div>
@@ -128,15 +130,51 @@
 
         <section class="contact_me" id="contact"> 
             <h2>Contact me</h2>
-            <form action="mysql/portfolio" method="POST">
-                <input id="first_name" type="text" name="First_Name" placeholder="First name" maxlength="50" required>
-                <input id="last_name" type="text" name="Last_Name" placeholder="Last name" maxlength="50" required>
-                <input id="email" type="email" name="Email" placeholder="Email" maxlength="50" required>
-                <input id="phone_number" type="tel" name="Phone_Number" placeholder="Phone number" maxlength="15" required>
-                <textarea id="discussion" name="entry" rows="5" placeholder="What would you like to discuss?"></textarea>
+            <form id="submission-form" novalidate>
+                <div class="box-1">
+                    <i class="fa-solid fa-user"></i>
+                    <label for="first_name">First name</label>
+                    <input id="first_name" type="text" name="First_Name" placeholder="For example: Lesya">
+                    <span id="f_name_error"></span>
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                
+                <div class="box-2">
+                    <i class="fa-solid fa-user-circle"></i>
+                    <label for="last_name">Last name</label>
+                    <input id="last_name" type="text" name="Last_Name" placeholder="For example: Nikityuk">
+                    <span id="l_name_error"></span>
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+
+                <div class="box-3">
+                    <label for="email">Email</label>
+                    <input id="email" type="text" name="Email" placeholder="For example: lesya_nik425@gmail.com">
+                    <span id="email_error"></span>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                
+                <div class="box-4">
+                    <label for="phone_number">Phone number</label>
+                    <input id="phone_number" type="text" name="Phone_Number" placeholder="For example: +394597412">
+                    <span id="phone_error"></span>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+
+                <div class="box-5">
+                    <i class="fa-solid fa-comment"></i>
+                    <label for="discussion">Discussion</label>
+                    <textarea id="discussion" name="entry" rows="5" placeholder="What would you like to discuss?"></textarea>
+                    <span id="discussion_error"></span>
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                
                 <div class="checkbox">
                     <input id="check" type="checkbox" required>
-                    <label for="check">I agree with everything</label>
+                    <label for="check">I agree with everything</label> <br>
+                    <span id="check_error"></span>
                 </div>
                 <button type="submit" class="btn-primary">Submit</button>
             </form>
