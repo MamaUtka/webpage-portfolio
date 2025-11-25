@@ -84,16 +84,18 @@
         <section id="projects" class="project-slides">
             <div class="slider-wrapper">
                 <div class="slides">
-                    <img src="project-images/blue-project.jpg" alt="Image #1" class="slide">
-                    <img src="project-images/example-project.jpg" alt="Image #2" class="slide">
-                    <img src="project-images/fashion-project.jpg" alt="Image #3" class="slide">
-                    <img src="project-images/design-project.jpg" alt="Image #4" class="slide">
-                    <img src="project-images/furniture-project.jpg" alt="Image #5" class="slide">
-                    <img src="project-images/restaurant-project.jpg" alt="Image #6" class="slide">
+                    <img src="project-images/blue-project.jpg" alt="Image #1" class="slide" data-original="blue-project">
+                    <img src="project-images/example-project.jpg" alt="Image #2" class="slide" data-original="example-project">
+                    <img src="project-images/fashion-project.jpg" alt="Image #3" class="slide" data-original="fashion-project">
+                    <img src="project-images/design-project.jpg" alt="Image #4" class="slide" data-original="design-project">
+                    <img src="project-images/furniture-project.jpg" alt="Image #5" class="slide" data-original="furniture-project">
+                    <img src="project-images/restaurant-project.jpg" alt="Image #6" class="slide" data-original="restaurant-project">
                 </div>
                 <button class="prev" onclick="prevSlide()">&#10094</button>
                 <button class="next" onclick="nextSlide()">&#10095</button>
-            </div>
+            </div> 
+                
+            <button id="open-btn">View the project</button>
         </section>
         <!-- + PROJECTS SECTION + -->
 
@@ -180,6 +182,14 @@
             </form>
         </section>
     </main>
+
+    
+    <div id="modal-container">
+        <div id="modal">
+            <div id="close-btn">&times;</div>
+            <img src="" class="full-img" />
+        </div>
+    </div>
 
     <script src="javaSlides.js"></script>
 

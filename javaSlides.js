@@ -175,3 +175,32 @@ document.getElementById("submission-form").addEventListener("submit", function (
 });
 
 
+/* --------- POP UP WINDOW ------------- */
+
+let openBtn = document.getElementById('open-btn');
+let modalContainer = document.getElementById('modal-container');
+let closeBtn = document.getElementById('close-btn');
+let original = document.querySelector('.full-img');
+
+slides.forEach((slide) => {
+  slide.addEventListener("click", () => {
+    modalContainer.style.display = 'block';
+    const originalSrc = slide.getAttribute("data-original");
+    original.src = `./project-images/${originalSrc}.jpg`;
+  });
+});
+
+openBtn.addEventListener('click', function() {
+    modalContainer.style.display = 'block';
+})
+
+
+closeBtn.addEventListener('click', function() {
+    modalContainer.style.display = 'none';
+})
+
+window.addEventListener('click', function(e) {
+    if (e.target === modalContainer) {
+        modalContainer.style.display = 'none';
+    }
+})
