@@ -19,6 +19,7 @@
         <li><a href="#projects">My Projects</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#color-generator">Color Palette Generator</a></li>
         </ul>
     </div>
 
@@ -190,6 +191,29 @@
             <img src="" class="full-img" />
         </div>
     </div>
+
+    <section class="generator_background" id="color-generator">
+
+        <div class="palette-container">
+            <h1>Color Craft</h1>
+
+            <div class="palette_choices">
+                <div>
+                    <input class="rgb-input" type="text" id="base-color-input" placeholder="#HEX" value="">
+                    <input class="number-input" type="number" id="color-count-input" value="4" min="1" max="6">
+                </div>
+                
+                <select id="color-mode">
+                    <option value="monochromatic">Monochromatic</option>
+                    <option value="analogous">Analogous</option>
+                    <option value="complementary">Complementary</option>
+                    <option value="triadic">Triadic</option>
+                </select>
+                <button id="generate-btn">Generate Palette</button>
+            </div>
+            <div id="palette-grid"></div>
+        </div>
+    </section>
 
     <script src="javaSlides.js"></script>
 
