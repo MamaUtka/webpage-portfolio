@@ -16,11 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 /* --------- PROJECT SLIDES ------------- */
 
-const slides = document.querySelectorAll(".slides img");
+let slides = [];
 let slideIndex = 0;
-let indervalId = null;
-
-document.addEventListener("DOMContentLoaded", initializeSlider);
+let intervalId = null;
 
 function initializeSlider() {
     if (slides.length > 0) {
@@ -55,6 +53,57 @@ function nextSlide() {
     slideIndex++;
     showSlide(slideIndex);
 }
+
+
+/* -------- LOADING CIRCLE ---------- */
+const imgURLArr = [
+    "project-images/blue-project.jpg",
+    "project-images/example-project.jpg",
+    "project-images/fashion-project.jpg",
+    "project-images/design-project.jpg",
+    "project-images/furniture-project.jpg",
+    "project-images/restaurant-project.jpg"
+];
+
+const spinner = document.querySelector(".center");
+const gallery = document.querySelector(".slides");
+
+function loadImage(url) {
+    return new Promise((resolve, reject) => {
+        const img = document.createElement("img");
+
+        img.classList.add("hidden");
+        img.src = url;
+
+        img.onload = () => resolve(img);
+        img.onerror = () => reject(new Error("Failed to load: " + url));
+    });
+}
+
+function loadGallery() {
+    const promiseArr = imgURLArr.map(url => loadImage(url));
+
+    Promise.all(promiseArr)
+        .then(images => {
+            spinner.style.display = "none";
+            gallery.classList.remove("hidden-slides");
+
+            images.forEach(img => {
+                img.classList.remove("hidden");
+                gallery.appendChild(img);
+
+                slides = document.querySelectorAll(".slides img");
+
+                initializeSlider();
+            });
+        })
+        .catch(err => {
+            spinner.style.display = "none";
+            alert("Error loading images:\n" + err.message);
+        });
+}
+
+loadGallery();
 
 
 /* --------- VALIDATION FORM ------------- */
@@ -204,6 +253,7 @@ window.addEventListener('click', function(e) {
         modalContainer.style.display = 'none';
     }
 })
+
 
 
 /* --------------- Color Palette Generator ------------- */
@@ -533,3 +583,4 @@ class ColorPaletteGenerator {
 }
 
 new ColorPaletteGenerator();
+
