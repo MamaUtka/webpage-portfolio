@@ -38,7 +38,7 @@ html {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 0 15px rgba(125, 95, 255, 0.15);
-    z-index: 100;
+    z-index: 1000;
     transition: 1s;
 }
 
@@ -384,38 +384,80 @@ a {
 .project-slides {
   text-align: center;
   min-height: 100vh;
-  padding: 120px 7%;
+  padding: 100px 7% 135px;
   background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .slider-wrapper {
   position: relative;
-  width: 80%;
-  max-width: 800px;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
+  width: 900px;
+  height: 520px;
+  box-shadow: 0 15px 20px #50505083;
 }
 
-.slides img {
-  display: none;
+#open-btn {
+  background: linear-gradient(135deg, var(--pink), var(--violet));
+  color: var(--bg);
+  border: none;
+  border-radius: 40px;
+  padding: 15px 50px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(255, 138, 203, 0.4);
+  transition: all 0.5s ease;
+  position: absolute;
+  left: 23%;
+  bottom: 7%;
+}
+
+.slides img.item {
+    display: block;
+    position: absolute;
+    top: 90%;
+    transform: translate(20%, -50%);
+    width: 200px;
+    height: 300px;
+    border-radius: 20px;
+    object-fit: cover;
+    transition: 0.5s;
+    box-shadow: 0 15px 20px #50505083;
+    object-position: top;
+}
+
+.slider-wrapper .item:nth-child(1),
+.slider-wrapper .item:nth-child(2) {
+  top: 0;
+  left: 0;
+  transform: translate(0, 0);
+  border-radius: 0;
   width: 100%;
-  height: 500px;
-  max-width: 900px;
-  box-shadow: 5px 5px 20px rgba(32, 29, 35, 0.886);
-  border-radius: 10px;
-  overflow: hidden;
+  height: 100%;
+  box-shadow: none;
+  object-fit: cover;
 }
 
-img.displaySlide {
-  display: block;
-  animation: fade .6s ease-in-out;
+.slider-wrapper .item:nth-child(3) {
+  left: 50%;
+}
+
+.slider-wrapper .item:nth-child(4) {
+  left: calc(50% + 220px);
+}
+
+.slider-wrapper .item:nth-child(5) {
+  left: calc(50% + 440px);
+}
+
+.slider-wrapper .item:nth-child(n + 6) {
+  left: calc(50% + 660px);
+  opacity: 0;
 }
 
 .slider-wrapper button {
@@ -434,6 +476,11 @@ img.displaySlide {
 
 .slider-wrapper button:hover {
   background-color: rgba(0, 0, 0, 0.7);
+}
+
+img.displaySlide {
+  display: block;
+  animation: fade .6s ease-in-out;
 }
 
 .slider-wrapper .prev {
@@ -516,19 +563,6 @@ span {
 }
 
 /* ---------- POP UP WINDOW -------------- */
-#open-btn {
-  background: linear-gradient(135deg, var(--pink), var(--violet));
-  color: var(--bg);
-  border: none;
-  border-radius: 40px;
-  padding: 15px 50px;
-  font-size: 18px;
-  font-weight: 600;
-  margin-top: 40px;
-  cursor: pointer;
-  box-shadow: 0 0 15px rgba(255, 138, 203, 0.4);
-  transition: all 0.5s ease;
-}
 
 #modal {
   position: absolute;
@@ -542,7 +576,6 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   animation: animatemodal;
   animation-duration: .4s;
 }
@@ -594,7 +627,7 @@ span {
 
 .about-me {
   min-height: 100vh;
-  padding: 110px 5% 40px;
+  padding: 50px 5% 40px;
   background: var(--bg);
   color: var(--dark);
   display: flex;
@@ -748,6 +781,10 @@ span {
   align-self: end;
 }
 
+#check {
+  background: #ffffff;
+}
+
 
 /* ============ SUBMISSION FORM STYLE ERRORS =============*/
 
@@ -885,8 +922,10 @@ h1 {
 
 .color-code {
   background: hsla(0, 0%, 0%, 0.6);
-  padding: 5px 10px;
+  padding: 4px 8px;
   border-radius: 5px;
+  display: inline-block;
+  line-height: 1;
 }
 
 #generate-btn {

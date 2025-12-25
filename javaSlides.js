@@ -23,7 +23,6 @@ let intervalId = null;
 function initializeSlider() {
     if (slides.length > 0) {
         slides[slideIndex].classList.add("displaySlide");
-        intervalId = setInterval(nextSlide, 5000);
     }
 }
 
@@ -54,7 +53,6 @@ function nextSlide() {
     showSlide(slideIndex);
 }
 
-
 /* -------- LOADING CIRCLE ---------- */
 const imgURLArr = [
     "project-images/blue-project.jpg",
@@ -71,10 +69,9 @@ const gallery = document.querySelector(".slides");
 function loadImage(url) {
     return new Promise((resolve, reject) => {
         const img = document.createElement("img");
-
-        img.classList.add("hidden");
         img.src = url;
-
+        img.classList.add("item");
+        
         img.onload = () => resolve(img);
         img.onerror = () => reject(new Error("Failed to load: " + url));
     });
@@ -89,21 +86,65 @@ function loadGallery() {
             gallery.classList.remove("hidden-slides");
 
             images.forEach(img => {
-                img.classList.remove("hidden");
                 gallery.appendChild(img);
-
-                slides = document.querySelectorAll(".slides img");
-
-                initializeSlider();
             });
+            
+            setupControls(); 
         })
         .catch(err => {
             spinner.style.display = "none";
-            alert("Error loading images:\n" + err.message);
+            console.error(err);
         });
 }
 
+function setupControls() {
+    const next = document.querySelector('.next');
+    const prev = document.querySelector('.prev');
+
+    next.addEventListener('click', () => {
+        const items = document.querySelectorAll('.item');
+        gallery.appendChild(items[0]);
+    });
+
+    prev.addEventListener('click', () => {
+        const items = document.querySelectorAll('.item');
+        gallery.prepend(items[items.length - 1]);
+    });
+}
+
 loadGallery();
+
+/* --------- POP UP WINDOW ------------- */
+const modalContainer = document.getElementById('modal-container');
+const closeBtn = document.getElementById('close-btn');
+const openBtn = document.getElementById('open-btn');
+const fullImg = document.querySelector('.full-img');
+
+function openModal(src) {
+    modalContainer.style.display = 'block';
+    fullImg.src = src;
+}
+
+openBtn.addEventListener('click', () => {
+    const items = document.querySelectorAll('.item');
+
+    if (items.length > 0) {
+        const fullImg = items[1]; 
+        openModal(fullImg.src);
+    }
+});
+
+gallery.onclick = function(event) {
+    let img = event.target.closest('.item');
+    if (!img) return;
+
+    openModal(img.src);
+};
+
+closeBtn.onclick = () => modalContainer.style.display = 'none';
+window.onclick = (e) => {
+    if (e.target === modalContainer) modalContainer.style.display = 'none';
+};
 
 
 /* --------- VALIDATION FORM ------------- */
@@ -222,38 +263,6 @@ document.getElementById("submission-form").addEventListener("submit", function (
     this.reset();
   }
 });
-
-
-/* --------- POP UP WINDOW ------------- */
-
-let openBtn = document.getElementById('open-btn');
-let modalContainer = document.getElementById('modal-container');
-let closeBtn = document.getElementById('close-btn');
-let original = document.querySelector('.full-img');
-
-slides.forEach((slide) => {
-  slide.addEventListener("click", () => {
-    modalContainer.style.display = 'block';
-    const originalSrc = slide.getAttribute("data-original");
-    original.src = `./project-images/${originalSrc}.jpg`;
-  });
-});
-
-openBtn.addEventListener('click', function() {
-    modalContainer.style.display = 'block';
-})
-
-
-closeBtn.addEventListener('click', function() {
-    modalContainer.style.display = 'none';
-})
-
-window.addEventListener('click', function(e) {
-    if (e.target === modalContainer) {
-        modalContainer.style.display = 'none';
-    }
-})
-
 
 
 /* --------------- Color Palette Generator ------------- */
@@ -583,4 +592,3 @@ class ColorPaletteGenerator {
 }
 
 new ColorPaletteGenerator();
-
