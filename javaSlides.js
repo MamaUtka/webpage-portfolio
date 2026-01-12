@@ -129,8 +129,8 @@ openBtn.addEventListener('click', () => {
     const items = document.querySelectorAll('.item');
 
     if (items.length > 0) {
-        const fullImg = items[1]; 
-        openModal(fullImg.src);
+        const activeImg = items[1]; 
+        openModal(activeImg.src);
     }
 });
 
@@ -145,7 +145,6 @@ closeBtn.onclick = () => modalContainer.style.display = 'none';
 window.onclick = (e) => {
     if (e.target === modalContainer) modalContainer.style.display = 'none';
 };
-
 
 /* --------- VALIDATION FORM ------------- */
 
